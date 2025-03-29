@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Database Tables</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+        th {
+            background-color: #f4f4f4;
+        }
+    </style>
+</head>
+<body>
+    <h1>Freeradius Tables</h1>
+    <table id="tables">
+        <thead>
+            <tr>
+                <th>Table Name</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+
+    <script>
+        // Fetch table names from the backend and populate the table
+        fetch('http://share.amal:5000/tables')
+        .then(response => response.json())
+        .then(data => {
+            const tbody = document.querySelector('#tables tbody');
+            data.forEach(row => {
+                const tr = document.createElement('tr');
+
+                // Create table name cell
+                const tdName = document.createElement('td');
+                tdName.textContent = row.table_name;
+
+                // Create "Add a row" button
+                const tdAddButton = document.createElement('td');
+                const addRowButton = document.createElement('button');
+                addRowButton.textContent = 'Add a row';
+                addRowButton.addEventListener('click', () => {
+                    alert(`Add a row to table: ${row.table_name}`);
+                    // Add further functionality here for adding a row
+                });
+                tdAddButton.appendChild(addRowButton);
+
+                // Create "Edit rows" button
+                const tdEditButton = document.createElement('td');
+                const editRowsButton = document.createElement('button');
+                editRowsButton.textContent = 'Edit rows';
+                editRowsButton.addEventListener('click', () => {
+                    alert(`Edit rows in table: ${row.table_name}`);
+                    // Add further functionality here for editing rows
+                });
+                tdEditButton.appendChild(editRowsButton);
+
+                // Append cells to the row
+                tr.appendChild(tdName);
+                tr.appendChild(tdAddButton);
+                tr.appendChild(tdEditButton);
+
+                // Append row to the table body
+                tbody.appendChild(tr);
+            });
+        })
+        .catch(err => console.error('Error fetching tables:', err));
+    </script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  database:
+    image: postgres:15
+    environment:
+      POSTGRES_USER: radius
+      POSTGRES_PASSWORD: 1234
+      POSTGRES_DB: radius
+    ports:
+      - "5432:5432"
+    volumes:
+      - /var/lib/docker/volumes/crud-app_pgdata/_data:/var/lib/postgresql/data
+
+  backend:
+    build:
+      context: ./backend  # Directory containing your Node.js app and Dockerfile
+    ports:
+      - "5000:5000"       # Node.js app port exposed
+    environment:
+      DB_HOST: database   # Hostname for database service
+      DB_PORT: 5432       # PostgreSQL default port
+      DB_USER: radius     # Match the database environment variables
+      DB_PASSWORD: 1234
+      DB_NAME: radius
+    depends_on:
+      - database           # Ensure database container starts first
+    volumes:
+      - /var/lib/docker/volumes/ftpdata/_data/shareamal/backend:/app
+       
