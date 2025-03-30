@@ -27,4 +27,10 @@ services:
       - database           # Ensure database container starts first
     volumes:
       - /var/lib/docker/volumes/ftpdata/_data/shareamal/backend:/app
+  adminer:
+    image: adminer:latest
+    ports:
+      - "8082:8080"  # Adminer accessible at localhost:8081
+    depends_on:
+      - database
        
