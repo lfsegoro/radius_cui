@@ -25,8 +25,8 @@ services:
       DB_NAME: radius
     depends_on:
       - database           # Ensure database container starts first
-    volumes:
-      - /var/lib/docker/volumes/ftpdata/_data/shareamal/backend:/app
+    #volumes:
+     # - /var/lib/docker/volumes/ftpdata/_data/shareamal/backend:/app
   adminer:
     image: adminer:latest
     ports:
