@@ -36,3 +36,4 @@ Detailed note:
 - all host/nas allowed, to see the secret: 1 entry in 'nas' table.
 - adminer can have access to all table, make sure choose Postgresql, dbHost ip ADDRESS, username/password you can see in docker-compose.yml
 - the only difference with default freeradius config is modified modules only  'sql' inside the /etc/freeradius/mods-enable
+- it collude many ports udp and tcp, 1812, 1813, 3799, 5432, 5000, 8082, 8080. if you doing this kind of thing over and over you will learn a lot backend, frontend and tcp/ip etc.
