@@ -14,7 +14,16 @@ Usage :
 # This is a shell command
 git clone https://github.com/lfsegoro/radiusapp.git
 cd ./radiusapp
-docker-compose up --build
+docker-compose build
+source ./backend/hostip.sh
+docker-compose up
+
+```
+```bash
+# if you want to up only make sure inside radiusapp folder
+cd ./radiusapp
+source ./backend/hostip.sh
+docker-compose up
 
 ```
 
