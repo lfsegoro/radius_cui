@@ -38,6 +38,8 @@ services:
   backend:
     build:
       context: ./backend  # Directory containing your Node.js app and Dockerfile
+      args:
+        - HOST_IP=${HOST_IP}
     ports:
       - "5000:5000"       # Node.js app port exposed
     environment:
@@ -46,6 +48,7 @@ services:
       DB_USER: radius     # Match the database environment variables
       DB_PASSWORD: 1234
       DB_NAME: radius
+      HOST_IP: ${HOST_IP}
       # TZ: ${TZ} # Dynamically set timezone based on host
     depends_on:
       - database           # Ensure database container starts first
@@ -54,9 +57,9 @@ services:
         ipv4_address: 192.168.1.4
     volumes:
       - /etc/localtime:/etc/localtime:ro
-      - ./backend/hostip.sh:/usr/local/bin/hostip.sh
-    command:
-      - /bin/bash -c "source /usr/local/bin/hostip.sh"
+    #   - ./backend/hostip.sh:/usr/local/bin/hostip.sh
+    # command:
+    #   - /bin/bash -c "source /usr/local/bin/hostip.sh"
 
   adminer:
     image: adminer:latest
