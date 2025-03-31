@@ -75,5 +75,8 @@ networks:
     ipam:
       config:
         - subnet: 192.168.1.0/24
+  default:
+    external:
+      name: host
 # volumes:
 #   - radius327:
