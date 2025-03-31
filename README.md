@@ -14,7 +14,7 @@ Usage :
 # This is a shell command
 git clone https://github.com/lfsegoro/radiusapp.git
 cd ./radiusapp
-docker-compose up -d --build
+docker-compose up --build
 
 ```
 
