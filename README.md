@@ -17,9 +17,6 @@ docker-compose up --build
 ```
 
 
-1. bash# git clone https://github.com/lfsegoro/radiusapp.git
-2. bash# cd ./radiusapp
-3. bash# docker-compose up --build
 4. Let the the script do autmatic pull and installing.
 5. access from the UI.
 6. test using Ntradping or directly from NAS like mikrotik.
