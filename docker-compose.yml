@@ -7,15 +7,19 @@ services:
       POSTGRES_USER: radius
       POSTGRES_PASSWORD: 1234
       POSTGRES_DB: radius
+      # TZ: ${TZ} # Dynamically set timezone based on host
     ports:
       - "5432:5432"
     volumes:
       - ./pgdata:/var/lib/postgresql/data
+      - /etc/localtime:/etc/localtime:ro
     networks:
       custom_network:
         ipv4_address: 192.168.1.2
 
   radius:
+    # environment:
+      # - TZ=${TZ} # Dynamically set timezone based on host
     image: freeradius/freeradius-server:3.2.7
     ports:
       - "1812:1812/udp"
@@ -23,6 +27,7 @@ services:
       - "3799:3799/udp"
     volumes:
       - ./radius_etc/_data/:/etc/freeradius
+      - /etc/localtime:/etc/localtime:ro
     depends_on:
       - database
     networks:
@@ -41,17 +46,20 @@ services:
       DB_USER: radius     # Match the database environment variables
       DB_PASSWORD: 1234
       DB_NAME: radius
+      # TZ: ${TZ} # Dynamically set timezone based on host
     depends_on:
       - database           # Ensure database container starts first
     networks:
       custom_network:
         ipv4_address: 192.168.1.4
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
 
   adminer:
     image: adminer:latest
     environment:
-      - ADMINER_DEFAULT_SERVER=database
-      - ADMINER_DEFAULT_SYSTEM=PostgreSQL	
+      - ADMINER_DEFAULT_SERVER=192.168.1.2
+      # - TZ=${TZ} # Dynamically set timezone based on host
     ports:
       - "8082:8080"  # Adminer accessible at localhost:8081
     depends_on:
@@ -59,6 +67,8 @@ services:
     networks:
       custom_network:
         ipv4_address: 192.168.1.5
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
 
 networks:
   custom_network:
