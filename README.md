@@ -1,4 +1,4 @@
-Ready to use packages bundle:
+Ready to use packages bundle, with 4 services in docker-compose.yml configuration:
 1. freeradius server 3.2.7 as radius server.
 2. postgresql 15
 3. nodejs backend (akses: http://mainhostipaddress:5000) as basic UI that can be use as basis of developing.
@@ -10,12 +10,12 @@ Requirement:
 3. docker and docker-compose installed.
    
 Usage :
-1. git clone https://github.com/lfsegoro/nodejs.git
-2. docker-compose up --build
+1. bash# git clone https://github.com/lfsegoro/nodejs.git
+2. bash# docker-compose up --build
+3. Let the the script do autmatic pull and installing.
+4. access from the UI.
 
 You can learn the detail on the docker-compose.yml if you want to see the password or make modification.
-
-After that you can access the UI suing port 5000 or port 8082 as above mentioned.
 
 The database already have sample username for testing. you can check the radcheck table.
 
@@ -24,4 +24,8 @@ You can test using ntradping or directly from a NAS like mikrotik.
 If you need :
 - custom freeradius configuration
 - more polished UI
-You can contact me.
+
+Detailed sample entry of database:
+- username and password user, 1 entry in 'radcheck' table.
+- all host allowed, 1 entry in 'nas' table.
+- the modified modules only are 'sql' inside the /etc/freeradius/mods-enable
