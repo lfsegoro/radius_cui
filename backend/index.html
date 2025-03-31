@@ -31,6 +31,8 @@
     </table>
 
     <script>
+        const HOST_IP = "<%= process.env.HOST_IP %>"; 
+
         // Fetch table names and populate the table along with buttons
         fetch('http://${HOST_IP}:5000/tables')
             .then(response => response.json())
