@@ -10,7 +10,7 @@ Requirement:
 3. docker and docker-compose installed.
    
 Usage :
-1. bash# git clone https://github.com/lfsegoro/nodejs.git
+1. bash# git clone https://github.com/lfsegoro/radiusapp.git
 2. bash# docker-compose up --build
 3. Let the the script do autmatic pull and installing.
 4. access from the UI.
