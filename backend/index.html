@@ -31,7 +31,14 @@
     </table>
 
     <script>
-        const HOST_IP = "<%= process.env.HOST_IP %>"; 
+        // const HOST_IP = "<%= process.env.HOST_IP %>"; 
+        // const HOST_IP = window.location.hostname; // This dynamically gets the IP of the running host
+        fetch("http://192.168.1.4:5000/config") // Replace with actual backend IP
+    .then(response => response.json())
+    .then(config => {
+        const HOST_IP = config.HOST_IP;
+        console.log("Detected Backend IP:", HOST_IP);
+
 
         // Fetch table names and populate the table along with buttons
         fetch('http://${HOST_IP}:5000/tables')
