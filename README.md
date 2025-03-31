@@ -1,4 +1,4 @@
-Ready to use packages bundle, with 4 services in docker-compose.yml configuration:
+Ready to use OUT-OF-THE-BOX packages bundle, with 4 services in docker-compose.yml configuration:
 1. freeradius server 3.2.7 as radius server.
 2. postgresql 15
 3. nodejs backend (akses: http://mainhostipaddress:5000) as basic custom UI that can be use as basis of developing.
