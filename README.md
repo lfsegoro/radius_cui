@@ -10,7 +10,7 @@ Requirement:
 3. docker and docker-compose installed.
    
 Usage :
-```
+```bash
 git clone https://github.com/lfsegoro/radiusapp.git
 cd ./radiusapp
 docker-compose up --build
