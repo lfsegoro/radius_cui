@@ -11,10 +11,11 @@ Requirement:
    
 Usage :
 1. bash# git clone https://github.com/lfsegoro/radiusapp.git
-2. bash# docker-compose up --build
-3. Let the the script do autmatic pull and installing.
-4. access from the UI.
-5. test using Ntradping or directly from NAS like mikrotik.
+2. cd ./radiusapp
+3. bash# docker-compose up --build
+4. Let the the script do autmatic pull and installing.
+5. access from the UI.
+6. test using Ntradping or directly from NAS like mikrotik.
 
 You can learn the detail on the docker-compose.yml if you want to see the password or make modification.
 
