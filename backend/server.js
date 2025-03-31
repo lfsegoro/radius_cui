@@ -1,6 +1,10 @@
 const express = require('express');
 const { Pool } = require('pg');
 const app = express();
+require("dotenv").config();
+
+const HOST_IP = process.env.HOST_IP || "localhost";
+
 
 // Middleware to parse JSON requests
 app.use(express.json());
@@ -20,6 +24,9 @@ app.use(express.static('backend')); // Ensure 'backend' is the correct folder na
 // app.get('/', (req, res) => {
 //     res.send('Hello world!');
 // });
+app.get("/config", (req, res) => {
+    res.json({ HOST_IP });
+});
 
 app.get('/', (req, res) => {
     res.sendFile(__dirname + '/index.html'); // Update path based on your folder structure
@@ -194,4 +201,4 @@ app.get('/data', async (req, res) => {
 
 // Start the server
 const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => console.log(`Server running on http://localhost:${PORT}`));
+app.listen(PORT, () => console.log(`Server running on http://${HOST_IP}:${PORT}`));
