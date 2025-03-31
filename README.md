@@ -8,6 +8,7 @@ Requirement:
 1. Internet connection of the mainhost.
 2. *nix host environment with sudo or root access. Recommended fedora core os (FCOS).
 3. docker and docker-compose installed.
+4. bash,,sh not enough because must run a script.
    
 Usage :
 ```bash
