@@ -1,7 +1,7 @@
 const express = require('express');
 const { Pool } = require('pg');
 const app = express();
-require("dotenv").config();
+// require("dotenv").config();
 
 const HOST_IP = process.env.HOST_IP || "localhost";
 
