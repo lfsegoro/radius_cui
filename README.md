@@ -28,5 +28,5 @@ If you need :
 Detailed note:
 - username and password user testing, 1 entry in 'radcheck' table.
 - all host/nas allowed, to see the secret: 1 entry in 'nas' table.
-- adminer can have access to all table, make sure choose Postgresql, dbHost, username/password you can see in docker-compose.yml
+- adminer can have access to all table, make sure choose Postgresql, dbHost ip ADDRESS, username/password you can see in docker-compose.yml
 - the modified modules only are 'sql' inside the /etc/freeradius/mods-enable
