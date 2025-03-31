@@ -20,7 +20,7 @@ services:
     ports:
       - "1812:1812/udp"
       - "1813:1813/udp"
-      - "3709:3709/udp"
+      - "3799:3799/udp"
     volumes:
       - ./radius_etc/_data/:/etc/freeradius
     depends_on:
