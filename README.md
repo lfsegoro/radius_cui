@@ -11,8 +11,8 @@ Requirement:
    
 Usage :
 ```
-git clone https://github.com/lfsegoro/radiusapp.git \
-cd ./radiusapp \
+git clone https://github.com/lfsegoro/radiusapp.git
+cd ./radiusapp
 docker-compose up --build
 ```
 
