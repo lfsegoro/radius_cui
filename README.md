@@ -1,8 +1,8 @@
 Ready OUT-OF-THE-BOX to use packages bundle, with 4 services in docker-compose.yml configuration:
 1. freeradius server 3.2.7 as radius server.
 2. postgresql 15
-3. nodejs backend (akses: http://mainhostipaddress:5000) as basic custom UI that can be use as basis of developing.
-4. adminer (http://mainhostipaddress:8082) as additional general UI that can directly access the database.
+3. nodejs backend (akses: http://host-ip:5000) as basic custom UI that can be use as basis of developing.
+4. adminer (http://host-ip:8082) as additional general UI that can directly access the database.
 
 Requirement:
 1. Internet connection of the mainhost.
@@ -19,7 +19,7 @@ docker-compose up --build
 
 
 4. Let the the script do autmatic pull and installing.
-5. access from the UI.  http://mainhostipaddress:5000 or http://mainhostipaddress:8082
+5. access from the UI.  http://host-ip:5000 or http://host-ip:8082
 6. test using Ntradping or directly from NAS like mikrotik.
 
 You can learn the detail on the docker-compose.yml if you want to see the password or make modification.
