@@ -11,6 +11,7 @@ Requirement:
    
 Usage :
 ```bash
+# This is a shell command
 git clone https://github.com/lfsegoro/radiusapp.git
 cd ./radiusapp
 docker-compose up --build
