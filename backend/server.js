@@ -3,6 +3,7 @@ const { Pool } = require('pg');
 const app = express();
 // require("dotenv").config();
 
+const mystring = process.env.HOST_IP || "localhost";
 
 
 // Middleware to parse JSON requests
@@ -24,7 +25,6 @@ app.use(express.static('backend')); // Ensure 'backend' is the correct folder na
 //     res.send('Hello world!');
 // });
 app.get("/config", (req, res) => {
-    const mystring = process.env.HOST_IP || "localhost";
     // const mystring = "192.168.22.254" || "localhost";
     res.json({ mystring });
 });
