@@ -31,7 +31,7 @@
 
     <script>
         // Fetch table names and populate the table along with buttons
-        fetch('http://share.amal:5000/tables')
+        fetch(`http://share.amal:5000/tables`)
             .then(response => response.json())
             .then(data => {
                 const tbody = document.querySelector('#tables tbody');
