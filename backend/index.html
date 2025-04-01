@@ -32,7 +32,15 @@
 
     <script>
         // Fetch table names and populate the table along with buttons
-        fetch(`http://192.168.1.1:5000/tables`)
+        fetch('/config')
+        .then(response => response.json())
+        .then(config => {
+            const mystring = config.mystring;
+            console.log('Backend Value:', mystring);
+        // Use the variable in your frontend logic
+        })
+        .catch(err => console.error('Error fetching config:', err));
+        fetch(`http://${mystring}:5000/tables`)
             .then(response => response.json())
             .then(data => {
                 const tbody = document.querySelector('#tables tbody');
@@ -82,7 +90,7 @@
     
             // Fetch column names for the selected table
             try {
-                const response = await fetch(`http://192.168.1.1:5000/columns/${tableName}`);
+                const response = await fetch(`http://${mystring}:5000/columns/${tableName}`);
                 const columns = await response.json();
     
                 // Create a container for the form
@@ -115,7 +123,7 @@
     
                     try {
                         // Send POST request to the backend
-                        const response = await fetch(`http://192.168.1.1:5000/add/${tableName}`, {
+                        const response = await fetch(`http://${mystring}:5000/add/${tableName}`, {
                             method: 'POST',
                             headers: { 'Content-Type': 'application/json' },
                             body: JSON.stringify(data)
@@ -149,7 +157,7 @@ async function renderEditForm(tableName) {
 
     // Fetch column names for the selected table
     try {
-        const response = await fetch(`http://192.168.1.1:5000/columns/${tableName}`);
+        const response = await fetch(`http://${mystring}:5000/columns/${tableName}`);
         const columns = await response.json();
 
         // Create a container for the form
@@ -203,7 +211,7 @@ async function renderEditForm(tableName) {
 
     // Fetch column names for the selected table
     try {
-        const response = await fetch(`http://192.168.1.1:5000/columns/${tableName}`);
+        const response = await fetch(`http://${mystring}:5000/columns/${tableName}`);
         const columns = await response.json();
 
         // Create a container for the form
@@ -236,7 +244,7 @@ async function renderEditForm(tableName) {
 
             try {
                 // Send search request to back end
-                const searchResponse = await fetch(`http://192.168.1.1:5000/search/${tableName}`, {
+                const searchResponse = await fetch(`http://${mystring}:5000/search/${tableName}`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(searchCriteria)
@@ -294,7 +302,7 @@ function renderSearchResults(rows, tableName, columns) {
             });
 
             try {
-                const response = await fetch(`http://192.168.1.1:5000/update/${tableName}`, {
+                const response = await fetch(`http://${mystring}:5000/update/${tableName}`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ keys: row, updates })

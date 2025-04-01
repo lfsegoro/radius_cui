@@ -3,7 +3,6 @@ const { Pool } = require('pg');
 const app = express();
 // require("dotenv").config();
 
-const HOST_IP = process.env.HOST_IP || "localhost";
 
 
 // Middleware to parse JSON requests
@@ -25,7 +24,8 @@ app.use(express.static('backend')); // Ensure 'backend' is the correct folder na
 //     res.send('Hello world!');
 // });
 app.get("/config", (req, res) => {
-    res.json({ HOST_IP });
+    const mystring = process.env.HOST_IP || "localhost";
+    res.json({ mystring });
 });
 
 app.get('/', (req, res) => {
@@ -201,4 +201,4 @@ app.get('/data', async (req, res) => {
 
 // Start the server
 const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => console.log(`Server running on http://${HOST_IP}:${PORT}`));
+app.listen(PORT, () => console.log(`Server running on http://${ipThatNeeded}:${PORT}`));
