@@ -24,8 +24,8 @@ app.use(express.static('backend')); // Ensure 'backend' is the correct folder na
 //     res.send('Hello world!');
 // });
 app.get("/config", (req, res) => {
-    // const mystring = process.env.HOST_IP || "localhost";
-    const mystring = "192.168.22.254" || "localhost";
+    const mystring = process.env.HOST_IP || "localhost";
+    // const mystring = "192.168.22.254" || "localhost";
     res.json({ mystring });
 });
 
@@ -202,4 +202,4 @@ app.get('/data', async (req, res) => {
 
 // Start the server
 const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => console.log(`Server running on http://ipThatNeeded:${PORT}`));
+app.listen(PORT, () => console.log(`Server running on http://${mystring}:${PORT}`));
