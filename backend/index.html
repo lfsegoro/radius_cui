@@ -32,10 +32,11 @@
 
     <script>
         // Fetch table names and populate the table along with buttons
+        let mystring;
         fetch('/config')
         .then(response => response.json())
         .then(config => {
-            const mystring = config.mystring;
+            mystring = config.mystring;
             console.log('Backend Value:', mystring);
         // Use the variable in your frontend logic
         })
