@@ -1,5 +1,5 @@
 ##version: '3.8'
-
+# All composed well, this is milestone so I called i v0.2
 services:
   database:
     image: postgres:15
