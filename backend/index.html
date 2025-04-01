@@ -20,7 +20,7 @@
     </style>
 </head>
 <body>
-    <h1>Freeradius Tables</h1>
+    <h1>My Tables</h1>
     <table id="tables">
         <thead>
             <tr>
@@ -39,8 +39,6 @@
             mystring = config.mystring;
             console.log('Backend Value:', mystring);
         // Use the variable in your frontend logic
-        })
-        .catch(err => console.error('Error fetching config:', err));
         fetch(`http://${mystring}:5000/tables`)
             .then(response => response.json())
             .then(data => {
@@ -325,6 +323,9 @@ function renderSearchResults(rows, tableName, columns) {
     document.body.appendChild(resultsContainer);
 }
 
+        })
+        .catch(err => console.error('Error fetching config:', err));
+        
 
         
         
