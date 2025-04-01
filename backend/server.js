@@ -25,7 +25,7 @@ app.use(express.static('backend')); // Ensure 'backend' is the correct folder na
 // });
 app.get("/config", (req, res) => {
     // const mystring = process.env.HOST_IP || "localhost";
-    const mystring = "teststring" || "localhost";
+    const mystring = "192.168.22.254" || "localhost";
     res.json({ mystring });
 });
 
