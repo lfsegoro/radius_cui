@@ -1,6 +1,6 @@
 Ready OUT-OF-THE-BOX to use packages bundle, with 4 services in docker-compose.yml configuration:
 1. freeradius server 3.2.7 as radius server.
-2. postgresql 15
+2. postgresql 17
 3. nodejs backend (akses: http://host-ip:5000) as basic custom UI that can be use as basis of developing.
 4. adminer (http://host-ip:8082) as additional general UI that can directly access the database.
 
@@ -13,8 +13,8 @@ Requirement:
 Usage :
 ```bash
 # This is a shell command
-git clone https://github.com/lfsegoro/radiusapp.git
-cd ./radiusapp
+git clone https://github.com/lfsegoro/radius_cui.git
+cd ./radius_cui
 docker-compose build
 source ./backend/hostip.sh
 docker-compose up
@@ -22,7 +22,7 @@ docker-compose up
 ```
 ```bash
 # if you want to up only make sure inside radiusapp folder
-cd ./radiusapp
+cd ./radius_cui
 source ./backend/hostip.sh
 docker-compose up
 
