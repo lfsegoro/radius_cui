@@ -1,3 +1,4 @@
+This is similiar with radiuapp but include a cui table that I will develop gradually.
 Ready OUT-OF-THE-BOX to use packages bundle, with 4 services in docker-compose.yml configuration:
 1. freeradius server 3.2.7 as radius server.
 2. postgresql 17
@@ -12,33 +13,37 @@ Requirement:
    
 Usage :
 ```bash
-# This is a shell command
+# Must run in bash shell because of hostip.sh need it (cant use sh shell).
 # Store the directory name in a variable
-target_dir="radius_cui"
+project_name="radius_cui"
+target_dir=$project_name # you can change to any literal string as directory name
 
 # Check if the directory exists, and create it if it doesn't
 if [ ! -d "$target_dir" ]; then
-  mkdir -p "$target_dir"
+    mkdir -p "$target_dir"
+    cd "$target_dir" || exit 1
+    git clone https://github.com/lfsegoro/"$project_name".git .
+else
+    cd "$target_dir" || exit 1
+    git pull # !!WARNING!! this will overwrite the directory content
 fi
 
-# dowload project content to current directory
-git clone https://github.com/lfsegoro/radius_cui.git .
+# to get the variable needed set
+HOST_IP=$(bash ./backend/hostip.sh)
+export HOST_IP
 
 # build process
-docker-compose build
+docker-compose build --no-cache
 ###################################################
 # If you already do above you can also run below
 # so you dont need to git clone and build again
 
 # optional :
-docker rm -f $(docker ps -aq -f status=exited) &> /dev/null &
-docker network prune -f &> /dev/null &
-
-# call bash first
-bash
-source ./backend/hostip.sh # needed to get host ip address
+docker rm -f $(docker ps -aq -f status=exited) >/dev/null 2>&1 || true
+docker network prune -f >/dev/null 2>&1 || true
 
 docker-compose up
+true
 
 ```
 
