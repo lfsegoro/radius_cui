@@ -42,8 +42,12 @@ for ip in $ip_addresses; do
   network_gateway=$(calculate_network "$default_gateway" "$cidr")
 
   if [ "$network_ip" == "$network_gateway" ]; then
-    export HOST_IP="$ip"
-    echo "Matching IP found: $HOST_IP"
-    break
+    # Return the HOST_IP value instead of exporting it
+    echo "$ip"
+    exit 0
   fi
 done
+
+# If no matching IP is found
+echo "No matching IP found!"
+exit 1
