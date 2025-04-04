@@ -2,7 +2,9 @@
 # All composed well, this is milestone so I called i v0.2
 services:
   database:
-    image: postgres:15
+    build:
+      # images: radapp_postgres
+      context: ./database
     environment:
       POSTGRES_USER: radius
       POSTGRES_PASSWORD: 1234
@@ -11,7 +13,7 @@ services:
     ports:
       - "5432:5432"
     volumes:
-      - ./pgdata:/var/lib/postgresql/data
+      - pgdata:/var/lib/postgresql/data:z
       - /etc/localtime:/etc/localtime:ro
     networks:
       custom_network:
@@ -26,17 +28,18 @@ services:
       - "1813:1813/udp"
       - "3799:3799/udp"
     volumes:
-      - ./radius_etc/_data/:/etc/freeradius
+      - ./radius_etc/_data/:/etc/freeradius:z
       - /etc/localtime:/etc/localtime:ro
     depends_on:
       - database
     networks:
       custom_network:
         ipv4_address: 192.168.1.3
-    #command: ["/usr/sbin/freeradius", "-X"]
+    command: ["/usr/sbin/freeradius", "-X"]
 
   backend:
     build:
+      # images: radapp_nodejs
       context: ./backend  # Directory containing your Node.js app and Dockerfile
       args:
         - HOST_IP=${HOST_IP}
@@ -85,5 +88,6 @@ networks:
   default:
     external:
       name: host
-# volumes:
+volumes:
+  pgdata:
 #   - radius327:
