@@ -19,7 +19,7 @@ docker-compose build
 
 # If you already do above you can also run below
 # so you dont need to git clone and build again
-docker rm $(docker ps -aq -f status=exited) # optional
+docker rm -f $(docker ps -aq -f status=exited) # optional
 docker network prune # optional
 source ./backend/hostip.sh # needed to get host ip address
 docker-compose up
