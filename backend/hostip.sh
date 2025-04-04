@@ -2,7 +2,7 @@
 
 # Get the default gateway
 default_gateway=$(ip route | grep default | awk '{print $3}')
-echo "Default Gateway: $default_gateway"
+#echo "Default Gateway: $default_gateway"
 
 # Get all IP addresses on the system
 ip_addresses=$(ip -4 addr show | sed -n 's/.*inet \([0-9.]*\).*/\1/p')
