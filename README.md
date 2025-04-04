@@ -26,14 +26,6 @@ source ./backend/hostip.sh # needed to get host ip address
 docker-compose up
 
 ```
-```bash
-# if you want to up only make sure inside radiusapp folder
-cd ./radius_cui
-source ./backend/hostip.sh
-docker-compose up
-
-```
-
 
 4. Let the the script do autmatic pull and installing.
 5. access from the UI.  http://host-ip:5000 or http://host-ip:8082
