@@ -13,16 +13,31 @@ Requirement:
 Usage :
 ```bash
 # This is a shell command
-git clone https://github.com/lfsegoro/radius_cui.git
-cd ./radius_cui
-docker-compose build
+# Store the directory name in a variable
+target_dir="radius_cui"
 
+# Check if the directory exists, and create it if it doesn't
+if [ ! -d "$target_dir" ]; then
+  mkdir -p "$target_dir"
+fi
+
+# dowload project content to current directory
+git clone https://github.com/lfsegoro/radius_cui.git .
+
+# build process
+docker-compose build
+###################################################
 # If you already do above you can also run below
 # so you dont need to git clone and build again
-docker rm -f $(docker ps -aq -f status=exited) # optional
-docker network prune -f # optional
+
+# optional :
+docker rm -f $(docker ps -aq -f status=exited) &> /dev/null &
+docker network prune -f &> /dev/null &
+
+# call bash first
 bash
 source ./backend/hostip.sh # needed to get host ip address
+
 docker-compose up
 
 ```
