@@ -1,4 +1,4 @@
-CREATE TABLE cui (
+ CREATE TABLE cui (
   clientipaddress INET NOT NULL DEFAULT '0.0.0.0',
   callingstationid varchar(50) NOT NULL DEFAULT '',
   username varchar(64) NOT NULL DEFAULT '',
