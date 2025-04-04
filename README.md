@@ -16,7 +16,12 @@ Usage :
 git clone https://github.com/lfsegoro/radius_cui.git
 cd ./radius_cui
 docker-compose build
-source ./backend/hostip.sh
+
+# If you already do above you can also run below
+# so you dont need to git clone and build again
+docker rm $(docker ps -aq -f status=exited) # optional
+docker network prune # optional
+source ./backend/hostip.sh # needed to get host ip address
 docker-compose up
 
 ```
